@@ -2,7 +2,7 @@ package fr.marc.pokemon;
 
 public class Pokemon {
 	
-	
+		
 		private Pokemon pokemon;	
 		private Pokemon pokemonSoin;
 		private String nom;
@@ -14,18 +14,46 @@ public class Pokemon {
 		private String message;
 		static int nbrPokemon;
 		private int pvMax;
-	
+		
+	public Pokemon() {
+		
+	}
+		
+		
 	public  Pokemon(String nom, int pvMax, int pointDeVie, Attaques attaque1, Attaques attaque2, Attaques attaque3, Attaques attaque4, String message) {
 		this.nom = nom;
 		this.pointDeVie = pointDeVie;
 		this.attaque1 = attaque1;
-		this.attaque1 = attaque2;
-		this.attaque1 = attaque3;
-		this.attaque1 = attaque4;
+		this.attaque2 = attaque2;
+		this.attaque3 = attaque3;
+		this.attaque4 = attaque4;
 		this.message = message;
 		this.pvMax = pvMax;
 		nbrPokemon++;
 	}
+	public static Attaques randomAttaques(Pokemon pokemon) {
+			Attaques attaque = new Attaques();
+			double random = Math.random() * 100;
+			
+			if (random <= 30) {
+				attaque = pokemon.getAttaque1();
+				
+			} 
+			if (random > 30 && random <= 60){
+				 attaque = pokemon.getAttaque2();
+				
+			} 
+			if (random > 60 && random <= 90) {
+				 attaque = pokemon.getAttaque3();
+				
+			} 
+			if (random > 90) {
+				 attaque = pokemon.getAttaque4();
+				
+			}
+			return attaque;
+			
+		}
 	
 	
 	public  Attaques getAttaque1() {
